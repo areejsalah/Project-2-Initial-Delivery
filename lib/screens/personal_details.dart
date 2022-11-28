@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/text_field.dart';
 
 class PersonalDetials extends StatelessWidget {
   const PersonalDetials({super.key});
@@ -20,22 +19,7 @@ class PersonalDetials extends StatelessWidget {
         ],
       )),
       body: SingleChildScrollView(
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: Colors.white,
-          ),
-          child: Column(children: [
-            MyTextField('Name'),
-            MyTextField('Address (Optional)'),
-            MyTextField('Email'),
-            MyTextField('Phone'),
-            MyTextField('Date Of Birth (Optional)'),
-            MyTextField('Website (Optional)'),
-            MyTextField('LinkedIn (Optional)'),
-          ]),
-        ),
+        child: 
       ),
     );
   }
