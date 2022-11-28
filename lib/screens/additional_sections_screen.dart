@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../ui/addtional_section_container.dart';
+import '../components/addtional_section_container.dart';
 
 class AdditionalSectionsScreen extends StatelessWidget {
   @override

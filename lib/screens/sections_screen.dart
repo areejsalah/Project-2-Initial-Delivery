@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/screens/additional_sections_screen.dart';
-import 'package:flutter_application_1/screens/education.dart';
+import 'package:flutter_application_1/screens/education-screen.dart';
 import 'package:flutter_application_1/screens/experience_screen.dart';
 import 'package:flutter_application_1/screens/objectives_screen.dart';
 import 'package:flutter_application_1/screens/personal_details.dart';
@@ -8,9 +8,10 @@ import 'package:flutter_application_1/screens/project_screen.dart';
 import 'package:flutter_application_1/screens/reference_screen.dart';
 import 'package:flutter_application_1/screens/skills_screen.dart';
 
-import 'package:flutter_application_1/ui/section_view.dart';
+import 'package:flutter_application_1/components/section_view.dart';
 
-import '../ui/additional_section.dart';
+import '../components/additional_section.dart';
+import '../page/pdf_page.dart';
 
 class SectionsScreen extends StatelessWidget {
   const SectionsScreen({super.key});
@@ -19,13 +20,28 @@ class SectionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.grey[200],
-        appBar: /*PreferredSize(
-          preferredSize: const Size.fromHeight(150),
-          child: */
-            AppBar(
+        appBar: AppBar(
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Text('Profile'),
+              InkWell(
+                onTap: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return PdfPage();
+                  }));
+                },
+                child: const Icon(
+                  Icons.check,
+                  color: Colors.white,
+                  size: 40,
+                ),
+              )
+            ],
+          ),
           bottomOpacity: 0.0,
           elevation: 0.0,
-          title: const Text('Profile'),
         ),
         //),
         body: Container(
@@ -36,9 +52,10 @@ class SectionsScreen extends StatelessWidget {
             end: FractionalOffset(1, 1),
             stops: [0.0, 0.5],
             tileMode: TileMode.clamp,
-            //stops: [0.5, 0.5],
-            // begin: Alignment.topCenter,
+
+            //begin: Alignment.topCenter,
             // end: Alignment.center,
+            //stops: [0.5, 0.5],
             colors: [Color(0xFF00838F), Color(0xFFECEFF1)],
           )),
           child: SingleChildScrollView(
@@ -88,7 +105,7 @@ class SectionsScreen extends StatelessWidget {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return const ObjectivesScree();
+                            return ObjectivesScreen();
                           }));
                         },
                         child: SectionView(Icons.school, 'Objectives')),

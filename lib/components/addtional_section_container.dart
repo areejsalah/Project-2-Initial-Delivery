@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/additional_section.dart';
+import 'package:flutter_application_1/components/additional_section.dart';
 
 class AditionalSectionContainer extends StatelessWidget {
   String sectionName;

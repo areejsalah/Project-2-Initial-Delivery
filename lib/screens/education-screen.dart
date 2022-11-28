@@ -1,38 +1,37 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/provider/skill_provider.dart';
+import 'package:flutter_application_1/provider/education_provider.dart';
 import 'package:flutter_application_1/screens/resume_screen.dart';
+import 'package:flutter_application_1/widgets/education_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../widgets/skill_widget.dart';
-
-class SkillsScreen extends StatefulWidget {
-  const SkillsScreen({super.key});
+class EducationScreen extends StatefulWidget {
+  const EducationScreen({super.key});
 
   @override
-  State<SkillsScreen> createState() => _SkillsScreenState();
+  State<EducationScreen> createState() => _EducationScreenState();
 }
 
-class _SkillsScreenState extends State<SkillsScreen> {
+class _EducationScreenState extends State<EducationScreen> {
   int count = 1;
-  List<SkillWidget> skillsWidgets = [];
-  void addNewSkill() {
+  List<EducationWidget> educationWidgets = [];
+  void addNewEducation() {
     setState(() {
-      skillsWidgets.add(SkillWidget());
+      educationWidgets.add(EducationWidget());
       count++;
-      log(skillsWidgets.length.toString());
+      log(educationWidgets.length.toString());
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    skillsWidgets = List.generate(count, (index) => SkillWidget());
-    return Consumer<SkillProvider>(
+    educationWidgets = List.generate(count, (index) => EducationWidget());
+    return Consumer<EducationProvider>(
       builder: ((context, provider, child) {
         return Scaffold(
             floatingActionButton: FloatingActionButton.extended(
-              onPressed: addNewSkill,
+              onPressed: addNewEducation,
               label: const Text('Add'),
               icon: const Icon(Icons.add),
             ),
@@ -40,10 +39,10 @@ class _SkillsScreenState extends State<SkillsScreen> {
                 title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('Skills'),
+                const Text('Education'),
                 InkWell(
                   onTap: () {
-                    provider.insertNewSkill();
+                    provider.insertNewEducation();
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) {
                       return ResumeScreen();
@@ -58,9 +57,9 @@ class _SkillsScreenState extends State<SkillsScreen> {
               ],
             )),
             body: ListView.builder(
-                itemCount: skillsWidgets.length,
+                itemCount: educationWidgets.length,
                 itemBuilder: (context, index) {
-                  return skillsWidgets[index];
+                  return educationWidgets[index];
                 }));
       }),
     );
